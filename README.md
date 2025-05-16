@@ -18,3 +18,59 @@ ffmpeg -i "$(yt-dlp -f best -g "$YOUTUBE")" \
 ・生成先 frames/ は後段スクリプトが再帰検索します。  
 ・画質を保ちたい場合は -q:v 2（2-31、数字が小さいほど高画質）。  
 
+
+
+
+
+
+
+
+
+
+
+## githubの開発フロー早わかり・説明
+### Workflow (for my future self)
+```
+1. Create an Issue (task / bug / log)
+2. Move it to **In Progress** on Projects
+3. Commit with `feat: ...  #123`
+4. Open PR, merge -> Done (auto-closed)
+```
+
+まとめ
+```
+    Issues = タスク＋作業ログ
+
+    Projects = カンバンで見える化
+
+    Actions（任意） = 毎日まとめてログ
+
+    これだけで GitHub 内でタスク管理／履歴／振り返りが完結
+
+    後からチームが増えても、そのままスケールアップできる
+
+```
+### commit テンプレ
+```
+<type>(scope): <短い概要>  #<Issue番号>
+
+type = feat | fix | docs | refactor | chore | test  
+scope = オプション: モジュール名や機能名  
+
+<例>
+feat(map): add heatmap aggregation logic  #23
+fix(ml): prevent NaN in MLP loss          #45
+```
+
+### プルリクのテンプレ
+```
+概要 / Purpose
+<!-- 何を・なぜ -->
+
+🔗 関連 Issue
+Fixes #123  <!-- 自動 Close したい場合は Fixes/Closes キーワード -->
+
+✅ チェックリスト
+- [ ] ビルドが通る
+- [ ] 仕様書 / docs 更新
+```
