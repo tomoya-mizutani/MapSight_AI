@@ -1,0 +1,70 @@
+name: 🐞 Bug Report            # フォーム名（メニューに表示）
+description: バグを報告するフォーム
+title: "[Bug] <短い概要をここに>"  # 新規 Issue のタイトル初期値
+labels: [bug]                  # 自動で bug ラベルを付与
+assignees: []                  # デフォルト assignee（任意）
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        **⚠️ 必ず確認してください**
+        1. 最新の *main* ブランチで再現するか確認済み
+        2. 既存 Issue に同様の報告が無いことを検索済み
+  - type: textarea
+    id: env
+    attributes:
+      label: 🖥 環境 (Environment)
+      description: OS／Python 版／ブラウザなど再現に必要な情報
+      placeholder: |
+        - OS: Windows 10 / WSL2 Ubuntu 22.04
+        - Python: 3.11.6
+        - Node: 20.x
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: 🔁 再現手順 (Steps to Reproduce)
+      description: 箇条書きで具体的に
+      placeholder: |
+        1. `python scripts/clean_same_frames.py frames/` を実行
+        2. ...
+        3. ...
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: ✅ 期待される結果 (Expected Behavior)
+      placeholder: 正常に処理が終わり、... が出力される
+
+  - type: textarea
+    id: actual
+    attributes:
+      label: 🚨 実際の結果 (Actual Behavior)
+      placeholder: エラーログ全文を貼り付けてください
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: 📄 追加情報・ログ (Optional)
+      description: スタックトレースやスクリーンショットなど
+      placeholder: ```
+        Traceback (most recent call last):
+          ...
+      ```
+    validations:
+      required: false
+
+  - type: dropdown
+    id: severity
+    attributes:
+      label: 🔥 重大度 (Severity)
+      options:
+        - blocker (動かない・即修正)
+        - critical (主機能に影響)
+        - minor (回避策あり)
+      default: 2

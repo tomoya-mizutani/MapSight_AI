@@ -1,0 +1,19 @@
+name: 🛠 Task
+description: 実装／調査／リファクタなど
+title: "[Task] <概要>"
+labels: [task]
+body:
+  - type: textarea
+    id: goal
+    attributes:
+      label: 🎯 目的・完了条件
+    validations:
+      required: true
+  - type: textarea
+    id: todo
+    attributes:
+      label: ✅ To-do (チェックリスト)
+      value: |
+        - [ ] 実装
+        - [ ] テスト
+        - [ ] ドキュメント

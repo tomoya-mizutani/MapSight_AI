@@ -1,0 +1,12 @@
+name: 📒 Dev Log
+description: その日の作業メモをざっくり残す
+title: "[Log] yyyy-mm-dd"
+labels: [log]
+body:
+  - type: textarea
+    id: what
+    attributes:
+      label: 今日やったこと／気づき
+      placeholder: |
+        - Heatmap 集計アルゴリズムを numpy ベースに書き換え
+        - FPS: 25 → 40
