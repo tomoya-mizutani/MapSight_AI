@@ -74,3 +74,14 @@ Fixes #123  <!-- 自動 Close したい場合は Fixes/Closes キーワード --
 - [ ] ビルドが通る
 - [ ] 仕様書 / docs 更新
 ```
+
+
+## 🌱 Development Workflow
+
+1. **Issue を作る** (Task/Bug/Log)
+2. **Projects の Todo** に置く
+3. **branch**:`feature/<short-desc>` → コード
+4. `feat: ...  #issue` で commit
+5. PR → Merge → Projects Done (auto-archive)
+
+👉 [Backlog Board](https://github.com/<user>/<repo>/projects/1) で全タスクを確認
