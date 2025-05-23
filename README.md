@@ -1,16 +1,18 @@
+# README
+
 terminal :wsl  
 python version is 3.12.3  
 git version is 2.43.0.windows.1  
 
 仮想環境: python3.12-venv  
-起動コマンド: source ~/pubgmapenv/bin/activate   
+起動コマンド: source ~/pubgmapenv/bin/activate  
 終了コマンド:deactivate  
 
-
 ## 動画URLからフレーム抽出  
+
 MapSight_AI/data　でコマンド実行．  
 コマンド:  
-YOUTUBE="https://www.youtube.com/watch?v=tkbV9EJPak4"     
+YOUTUBE="<https://www.youtube.com/watch?v=tkbV9EJPak4>"  
 ffmpeg -i "$(yt-dlp -f best -g "$YOUTUBE")" \
        -vf "fps=2,scale=1920:-2" -q:v 2 frames/frame_%05d.jpg  
 
@@ -18,26 +20,21 @@ ffmpeg -i "$(yt-dlp -f best -g "$YOUTUBE")" \
 ・生成先 frames/ は後段スクリプトが再帰検索します。  
 ・画質を保ちたい場合は -q:v 2（2-31、数字が小さいほど高画質）。  
 
-
-
-
-
-
-
-
-
-
-
 ## githubの開発フロー早わかり・説明
+
 ### Workflow (for my future self)
+
 ```
+
 1. Create an Issue (task / bug / log)
 2. Move it to **In Progress** on Projects
 3. Commit with `feat: ...  #123`
 4. Open PR, merge -> Done (auto-closed)
+
 ```
 
 まとめ
+
 ```
     Issues = タスク＋作業ログ
 
@@ -50,7 +47,9 @@ ffmpeg -i "$(yt-dlp -f best -g "$YOUTUBE")" \
     後からチームが増えても、そのままスケールアップできる
 
 ```
+
 ### commit テンプレ
+
 ```
 <type>(scope): <短い概要>  #<Issue番号>
 
@@ -63,6 +62,7 @@ fix(ml): prevent NaN in MLP loss          #45
 ```
 
 ### プルリクのテンプレ
+
 ```
 概要 / Purpose
 <!-- 何を・なぜ -->
@@ -74,7 +74,6 @@ Fixes #123  <!-- 自動 Close したい場合は Fixes/Closes キーワード --
 - [ ] ビルドが通る
 - [ ] 仕様書 / docs 更新
 ```
-
 
 ## 🌱 Development Workflow
 
