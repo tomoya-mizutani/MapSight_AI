@@ -24,7 +24,7 @@ if [[ -z "$VIDEO_URL" ]]; then
   exit 1
 fi
 
-FPS="${2:-2}"
+FPS="${2:-0.5}" #${変数:-デフォルト値} 
 WIDTH="${3:-1920}"
 
 RAW_DIR="data/raw_videos"
