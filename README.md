@@ -14,7 +14,7 @@ YOUTUBE="https://www.youtube.com/watch?v=tkbV9EJPak4"
 ffmpeg -i "$(yt-dlp -f best -g "$YOUTUBE")" \
        -vf "fps=2,scale=1920:-2" -q:v 2 frames/frame_%05d.jpg  
 
-・fps=2 → 0.5 s ごとに 1 枚（後で変更可能）  
+・fps=2 → 0.5 s ごとに 1 枚（後で変更可能） # 0.5に変更済み
 ・生成先 frames/ は後段スクリプトが再帰検索します。  
 ・画質を保ちたい場合は -q:v 2（2-31、数字が小さいほど高画質）。  
 

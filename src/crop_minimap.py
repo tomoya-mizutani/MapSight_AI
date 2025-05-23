@@ -1,4 +1,8 @@
+# マップ配信から，該当部分の抽出．マップのみを切り抜く．
+# ROI 4 点 → 透視変換 & 512×512 保存
+
 import cv2, yaml, sys, pathlib, tqdm
+
 
 cfg = yaml.safe_load(open("config.yaml", encoding="utf-8"))
 src_pts = cv2.convexHull(
