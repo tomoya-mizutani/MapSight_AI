@@ -24,8 +24,7 @@ ffmpeg -i "$(yt-dlp -f best -g "$YOUTUBE")" \
 
 ### Workflow (for my future self)
 
-```
-
+```text
 1. Create an Issue (task / bug / log)
 2. Move it to **In Progress** on Projects
 3. Commit with `feat: ...  #123`
@@ -35,7 +34,7 @@ ffmpeg -i "$(yt-dlp -f best -g "$YOUTUBE")" \
 
 まとめ
 
-```
+```text
     Issues = タスク＋作業ログ
 
     Projects = カンバンで見える化
@@ -50,7 +49,7 @@ ffmpeg -i "$(yt-dlp -f best -g "$YOUTUBE")" \
 
 ### commit テンプレ
 
-```
+```text
 <type>(scope): <短い概要>  #<Issue番号>
 
 type = feat | fix | docs | refactor | chore | test  
@@ -63,7 +62,7 @@ fix(ml): prevent NaN in MLP loss          #45
 
 ### プルリクのテンプレ
 
-```
+```text
 概要 / Purpose
 <!-- 何を・なぜ -->
 
