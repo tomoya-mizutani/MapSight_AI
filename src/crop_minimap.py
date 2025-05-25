@@ -37,7 +37,7 @@ cv2.convexHull と cv2.UMat に関するドキュメント
 --------------------------------------------------------------------------------
 2. cv2.UMat（ユニファイドメモリアクセス行列）
 [参考資料1](https://qiita.com/dandelion1124/items/fad18a164108158585e3)
-[参考資料2](https://docs.opencv.org/4.x/d7/d45/classcv_1_1UMat.html)
+[公式資料](https://docs.opencv.org/4.x/d7/d45/classcv_1_1UMat.html)
 概要：
     OpenCVにおける高速処理対応の特殊な行列型。
     GPUやその他のハードウェアアクセラレーションを活用し、
