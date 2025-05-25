@@ -37,5 +37,5 @@ jobs:
       - name: Commit & Push if changed
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
-          commit_message: chore: update directory tree
+          commit_message: chore:update directory tree
           file_pattern: README.md
