@@ -1,5 +1,8 @@
 name: Update directory tree
 
+permissions:
+  contents: write   # リポジトリの読み書きを許可
+
 on:
   push:
     paths:
