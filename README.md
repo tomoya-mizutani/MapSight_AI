@@ -8,10 +8,11 @@ git version is 2.43.0.windows.1
 起動コマンド: source ~/pubgmapenv/bin/activate  
 終了コマンド:deactivate  
 
-## ディレクトリ構造図
+## 📂 ディレクトリ構造図
 
-本プロジェクトのディレクトリは以下の構造となっている．
-
+<!-- DIR-START -->
+<!-- ここが自動更新されます -->
+<!-- DIR-END -->
 
 ## 動画URLからフレーム抽出  
 
