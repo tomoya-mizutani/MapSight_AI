@@ -133,7 +133,6 @@ git version is 2.43.0.windows.1
 ```
 <!-- DIR-END -->
 
-
 ## 動画URLからフレーム抽出  
 
 MapSight_AI/data　でコマンド実行．  
