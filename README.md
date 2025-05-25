@@ -1,4 +1,4 @@
-# README
+# MAP_SIGHT_AI
 
 terminal :wsl  
 python version is 3.12.3  
@@ -12,23 +12,9 @@ git version is 2.43.0.windows.1
 
 本プロジェクトのディレクトリは以下の構造となっている．
 
-
-```mermaid
-graph TD
-  A["<PROJECT_NAME>/"]
-  A --> B["src/"]
-  B --> C["index.js"]
-  B --> D["utils/"]
-  D --> D1["helpers.js"]
-  D --> D2["constants.js"]
-  A --> E["tests/"]
-  E --> E1["index.test.js"]
-  A --> F["docs/"]
-  F --> F1["README.md"]
-  A --> G[".gitignore"]
-  A --> H["package.json"]
-  A --> I["README.md"]
-```
+<!-- DIR-START -->
+<!-- (ここが自動更新されます) -->
+<!-- DIR-END -->
 
 ## 動画URLからフレーム抽出  
 

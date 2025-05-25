@@ -1,32 +1,38 @@
-name: Daily Digest
+name: Update directory tree
+
 on:
-  schedule:
-    # GitHub cron は UTC。JST 12:00 = UTC 03:00
-    - cron: '0 3 * * *'
-  workflow_dispatch: {}            # 手動実行ボタンも付ける
+  push:
+    paths:
+      - '**'
+  workflow_dispatch:
 
 jobs:
-  digest:
+  gen-tree:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/github-script@v7
+      - uses: actions/checkout@v3
+
+      - name: Generate full-depth directory tree
+        run: |
+          {
+            echo '<!-- DIR-START -->'
+            echo '```'
+            # -a: 隠しファイルも含める、--dirsfirst: ディレクトリ優先
+            tree --charset ascii -a --dirsfirst .
+            echo '```'
+            echo '<!-- DIR-END -->'
+          } > TREE.md
+
+      - name: Inject tree into README
+        run: |
+          # README.md の DIR-START〜DIR-END を丸ごと入れ替え
+          sed -e '/<!-- DIR-START -->/,/<!-- DIR-END -->/d' README.md \
+            | sed '/## 📂 ディレクトリ構造図/r TREE.md' \
+            > README.new.md
+          mv README.new.md README.md
+
+      - name: Commit & Push if changed
+        uses: stefanzweifel/git-auto-commit-action@v4
         with:
-          script: |
-            const OWNER = context.repo.owner;
-            const REPO  = context.repo.repo;
-            // ❶ 24 時間以内に更新のあった Issue / PR を検索
-            const since = new Date(Date.now() - 24*3600*1000).toISOString();
-            const q = `repo:${OWNER}/${REPO} updated:>${since}`;
-            const res = await github.rest.search.issuesAndPullRequests({ q, per_page: 100 });
-            if (res.data.items.length === 0) return;  // 変化なしなら終了
-            // ❷ 箇条書きへ変換
-            const body = res.data.items
-              .map(i => `- [#${i.number}](${i.html_url}) ${i.title}`)
-              .join('\n');
-            // ❸ “log” 用固定 Issue (例 #1) にコメント追記
-            await github.rest.issues.createComment({
-              owner: OWNER,
-              repo: REPO,
-              issue_number: 1,      // ← log Issue 番号に合わせて変更
-              body: `### 🔔 Daily Digest (${new Date().toLocaleDateString('ja-JP')})\n${body}`
-            });
+          commit_message: chore: update directory tree
+          file_pattern: README.md
