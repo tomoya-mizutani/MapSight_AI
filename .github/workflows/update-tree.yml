@@ -21,6 +21,10 @@ jobs:
           {
             echo '<!-- DIR-START -->'
             echo '```'
+            # -a: 隠しファイルも含める
+            # --dirsfirst: ディレクトリを先に表示
+            # --prune: ignoreマッチした空ディレクトリを折りたたむ
+            # -I '.git/*': .git/ 以下の全エントリを無視
             tree --charset ascii -a --dirsfirst .
             echo '```'
             echo '<!-- DIR-END -->'
