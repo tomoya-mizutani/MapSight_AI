@@ -4,7 +4,7 @@
 # -----------------------------------------------------------------------------
 # 既存ディレクトリをそのまま活用します。
 #   * data/raw_videos/   … 元動画を保存（存在しなければ自動作成）
-#   * frames/            … 抽出 JPG を保存（存在しなければ自動作成）
+#   * data/frames/            … 抽出 JPG を保存（存在しなければ自動作成）
 #
 # Usage:
 #   ./extract_frames.sh <VIDEO_URL> [FPS] [WIDTH]
@@ -28,7 +28,7 @@ FPS="${2:-0.5}" #${変数:-デフォルト値}
 WIDTH="${3:-1920}"
 
 RAW_DIR="data/raw_videos"
-FRAMES_DIR="frames"
+FRAMES_DIR="data/frames"
 mkdir -p "$RAW_DIR" "$FRAMES_DIR"
 
 # --- 1) 動画ダウンロード: URL 種別で分岐 ------------------------------------
