@@ -20,7 +20,7 @@ jobs:
         run: |
           {
             echo '<!-- DIR-START -->'
-            echo '```'
+            echo '``` text'
             # ルートを表すドット
             echo '.'
             # .git ディレクトリだけを明示的に追加
