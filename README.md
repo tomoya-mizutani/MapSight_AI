@@ -31,6 +31,7 @@ git version is 2.43.0.windows.1
 |   |-- segment_rounds.py
 |   `-- utils.py
 |-- .gitignore
+|-- .markdownlint.json
 |-- README.md
 |-- TREE.md
 |-- config.yaml
@@ -39,7 +40,7 @@ git version is 2.43.0.windows.1
 |-- survey.md
 `-- 作業メモ.md
 
-6 directories, 19 files
+6 directories, 20 files
 ```
 <!-- DIR-END -->
 
