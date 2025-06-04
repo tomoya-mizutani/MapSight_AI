@@ -65,7 +65,11 @@ cv2.convexHull と cv2.UMat に関するドキュメント
 """
 
 
-import cv2, yaml, sys, pathlib, tqdm,numpy as np
+import cv2
+import yaml
+import pathlib
+import tqdm
+import numpy as np
 
 
 cfg = yaml.safe_load(open("config.yaml", encoding="utf-8"))
@@ -79,8 +83,9 @@ M = cv2.getPerspectiveTransform(src_pts, dst_pts)
 
 
 # --- 入出力ディレクトリの準備 ---
-in_dir  = pathlib.Path("data/frames")
-out_dir = pathlib.Path("data/minimaps"); out_dir.mkdir(exist_ok=True)
+in_dir = pathlib.Path("data/frames")
+out_dir = pathlib.Path("data/minimaps")
+out_dir.mkdir(exist_ok=True)
 
 # --- 画像処理ループ ---
 # 入力ディレクトリのjpgファイルを名前順に処理
