@@ -69,9 +69,8 @@ import cv2, yaml, sys, pathlib, tqdm,numpy as np
 
 
 cfg = yaml.safe_load(open("config.yaml", encoding="utf-8"))
-src_pts = cv2.convexHull(
-    cv2.UMat(np.array(cfg["roi"], dtype="float32"))
-).get().astype("float32")  # 4×2
+points = np.array(cfg["roi"], dtype="float32").reshape((-1, 1, 2))
+src_pts = cv2.convexHull(points).reshape(-1, 2).astype("float32")  # 4×2
 
 dst_w, dst_h = cfg["output_size"]
 dst_pts = np.array([[0, 0], [dst_w, 0], [dst_w, dst_h], [0, dst_h]], dtype="float32")
