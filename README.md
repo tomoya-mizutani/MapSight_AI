@@ -62,42 +62,52 @@ git version is 2.43.0.windows.1
 <!-- DIR-START -->
 ``` text
 .
-├── .github
-│   ├── ISSUE_TEMPLATE
-│   └── workflows
-├── .gitignore
-├── .markdownlint.json
-├── AGENTS.md
-├── README.md
-├── config.yaml
-├── docs
-│   ├── DATA_MANAGEMENT.md
-│   ├── GUI_implementation.md
-│   ├── GUI_requirements.md
-│   ├── JAPANESE_SUPPORT.md
-│   └── VIDEO_PIPELINE.md
-├── extract_frames.sh
-├── requirements.txt
-├── screenshot
-│   └── connect_wsl.png
-├── src
-│   ├── check_env.py
-│   ├── clean_same_frames.py
-│   ├── crop_minimap.py
-│   ├── data_dirs.py
-│   ├── gui
-│   ├── segment_rounds.py
-│   ├── utils.py
-│   └── video_pipeline.py
-├── survey.md
-├── tests
-│   ├── test_clean_same_frames.py
-│   ├── test_data_dirs.py
-│   ├── test_segment_rounds.py
-│   └── test_video_pipeline.py
-└── 作業メモ.md
+├── .git
+.
+|-- .github
+|   |-- ISSUE_TEMPLATE
+|   |   |-- bug.yaml
+|   |   |-- log.yaml
+|   |   `-- task.yaml
+|   `-- workflows
+|       |-- daily-digest.yml
+|       `-- update-tree.yml
+|-- docs
+|   |-- DATA_MANAGEMENT.md
+|   |-- GUI_implementation.md
+|   |-- GUI_requirements.md
+|   |-- JAPANESE_SUPPORT.md
+|   `-- VIDEO_PIPELINE.md
+|-- screenshot
+|   `-- connect_wsl.png
+|-- src
+|   |-- gui
+|   |   |-- main.py
+|   |   `-- styles.py
+|   |-- check_env.py
+|   |-- clean_same_frames.py
+|   |-- crop_minimap.py
+|   |-- data_dirs.py
+|   |-- segment_rounds.py
+|   |-- utils.py
+|   `-- video_pipeline.py
+|-- tests
+|   |-- test_clean_same_frames.py
+|   |-- test_data_dirs.py
+|   |-- test_segment_rounds.py
+|   `-- test_video_pipeline.py
+|-- .gitignore
+|-- .markdownlint.json
+|-- AGENTS.md
+|-- README.md
+|-- TREE.md
+|-- config.yaml
+|-- extract_frames.sh
+|-- requirements.txt
+|-- survey.md
+`-- 作業メモ.md
 
-9 directories, 26 files
+9 directories, 34 files
 ```
 <!-- DIR-END -->
 
