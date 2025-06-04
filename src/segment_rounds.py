@@ -23,7 +23,11 @@ Options (抜粋)
 """
 
 import numpy as np
-import argparse, cv2, os, shutil, time
+import argparse
+import cv2
+import os
+import shutil
+import time
 from pathlib import Path
 from concurrent.futures import ProcessPoolExecutor, ThreadPoolExecutor, as_completed
 from threading import Lock, Thread
