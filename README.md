@@ -79,11 +79,6 @@ git version is 2.43.0.windows.1
 |   |-- clean_same_frames.py
 |   |-- crop_minimap.py
 |   |-- segment_rounds.py
-|   |-- gui/
-|   |   |-- main.py
-|   |   |-- styles.py
-|   |   |-- components/
-|   |  └── utils/
 |   `-- utils.py
 |-- .gitignore
 |-- .markdownlint.json
