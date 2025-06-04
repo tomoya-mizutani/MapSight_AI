@@ -73,9 +73,11 @@ git version is 2.43.0.windows.1
 |       |-- daily-digest.yml
 |       `-- update-tree.yml
 |-- docs
+|   |-- DATA_MANAGEMENT.md
 |   |-- GUI_implementation.md
 |   |-- GUI_requirements.md
-|   `-- JAPANESE_SUPPORT.md
+|   |-- JAPANESE_SUPPORT.md
+|   `-- VIDEO_PIPELINE.md
 |-- screenshot
 |   `-- connect_wsl.png
 |-- src
@@ -85,11 +87,15 @@ git version is 2.43.0.windows.1
 |   |-- check_env.py
 |   |-- clean_same_frames.py
 |   |-- crop_minimap.py
+|   |-- data_dirs.py
 |   |-- segment_rounds.py
-|   `-- utils.py
+|   |-- utils.py
+|   `-- video_pipeline.py
 |-- tests
 |   |-- test_clean_same_frames.py
-|   `-- test_segment_rounds.py
+|   |-- test_data_dirs.py
+|   |-- test_segment_rounds.py
+|   `-- test_video_pipeline.py
 |-- .gitignore
 |-- .markdownlint.json
 |-- AGENTS.md
@@ -101,21 +107,23 @@ git version is 2.43.0.windows.1
 |-- survey.md
 `-- 作業メモ.md
 
-9 directories, 28 files
+9 directories, 34 files
 ```
 <!-- DIR-END -->
 
-## 動画URLからフレーム抽出  
+## 動画取り込み
 
-MapSight_AI/data　でコマンド実行．  
-コマンド:  
-YOUTUBE="<https://www.youtube.com/watch?v=tkbV9EJPak4>"  
-ffmpeg -i "$(yt-dlp -f best -g "$YOUTUBE")" \
-       -vf "fps=2,scale=1920:-2" -q:v 2 frames/frame_%05d.jpg  
+`video_pipeline.py` を使うと動画URLのダウンロードからフレーム抽出まで一括実行できます。
 
-・fps=2 → 0.5 s ごとに 1 枚（後で変更可能） # 0.5に変更済み
-・生成先 frames/ は後段スクリプトが再帰検索します。  
-・画質を保ちたい場合は -q:v 2（2-31、数字が小さいほど高画質）。  
+```bash
+python src/video_pipeline.py --url <VIDEO_URL> scrim 2024/05/06 --rounds 2
+```
+
+詳細は [docs/VIDEO_PIPELINE.md](docs/VIDEO_PIPELINE.md) を参照してください。
+
+## データディレクトリ生成
+
+`src/data_dirs.py` を使うと、Scrim や tournament フォルダを自動作成できます。詳細は [docs/DATA_MANAGEMENT.md](docs/DATA_MANAGEMENT.md) を参照してください。
 
 ## githubの開発フロー早わかり・説明
 
