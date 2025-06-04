@@ -72,9 +72,16 @@ git version is 2.43.0.windows.1
 |   `-- workflows
 |       |-- daily-digest.yml
 |       `-- update-tree.yml
+|-- docs
+|   |-- GUI_implementation.md
+|   |-- GUI_requirements.md
+|   `-- JAPANESE_SUPPORT.md
 |-- screenshot
 |   `-- connect_wsl.png
 |-- src
+|   |-- gui
+|   |   |-- main.py
+|   |   `-- styles.py
 |   |-- check_env.py
 |   |-- clean_same_frames.py
 |   |-- crop_minimap.py
@@ -85,6 +92,7 @@ git version is 2.43.0.windows.1
 |   `-- test_segment_rounds.py
 |-- .gitignore
 |-- .markdownlint.json
+|-- AGENTS.md
 |-- README.md
 |-- TREE.md
 |-- config.yaml
@@ -93,7 +101,7 @@ git version is 2.43.0.windows.1
 |-- survey.md
 `-- 作業メモ.md
 
-7 directories, 22 files
+9 directories, 28 files
 ```
 <!-- DIR-END -->
 
