@@ -80,6 +80,9 @@ git version is 2.43.0.windows.1
 |   |-- crop_minimap.py
 |   |-- segment_rounds.py
 |   `-- utils.py
+|-- tests
+|   |-- test_clean_same_frames.py
+|   `-- test_segment_rounds.py
 |-- .gitignore
 |-- .markdownlint.json
 |-- README.md
@@ -90,7 +93,7 @@ git version is 2.43.0.windows.1
 |-- survey.md
 `-- 作業メモ.md
 
-6 directories, 20 files
+7 directories, 22 files
 ```
 <!-- DIR-END -->
 
