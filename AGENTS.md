@@ -5,8 +5,7 @@
 | エージェント名        | 概要                                      | メインファイル                  | 依存ライブラリ           |
 |----------------------|-------------------------------------------|-------------------------------|--------------------------|
 | IssueAutoSolver      | GitHub Issueを自動で解析・解決しPRを作成  | agents/issue_auto_solver.py   | openai, PyGithub         |
-| TestGenerator        | コードからユニットテストを自動生成         | agents/test_generator.py      | openai                   |
-| DocSummarizer        | ドキュメントを自動で要約                  | agents/doc_summarizer.py      | openai                   |
+
 
 ---
 
