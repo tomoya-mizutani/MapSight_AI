@@ -72,6 +72,8 @@ git version is 2.43.0.windows.1
 |   `-- workflows
 |       |-- daily-digest.yml
 |       `-- update-tree.yml
+|-- Agents
+|   `-- issue_auto_solver.py
 |-- docs
 |   |-- GUI_implementation.md
 |   |-- GUI_requirements.md
@@ -101,7 +103,7 @@ git version is 2.43.0.windows.1
 |-- survey.md
 `-- 作業メモ.md
 
-9 directories, 28 files
+10 directories, 29 files
 ```
 <!-- DIR-END -->
 
