@@ -7,7 +7,7 @@
 ### 1. Issue Auto Solver
 
 - **Description**: GitHubのIssueを検出し、AIが自動的に解析して解決方法を提示し、プルリクエストを作成する。
-- **Trigger Condition**: Labelが「auto-solve」に設定されたIssueを検知したとき。
+- **Trigger Condition**: Labelが「gpt-auto」に設定されたIssueを検知したとき。
 - **Expected Behavior**:
   1. Issueを解析して適切な解決策を提案。
   2. コードの変更案を作成。

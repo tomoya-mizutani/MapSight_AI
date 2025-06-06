@@ -59,6 +59,7 @@ def phash64(img: np.ndarray, hash_size: int = 8) -> int:
         img_resized = cv2.cvtColor(img_resized, cv2.COLOR_BGR2GRAY)
     img_resized = np.float32(img_resized)
     # 3. 2‑D DCT
+    img_resized = np.ascontiguousarray(img_resized)
     dct = cv2.dct(img_resized)
     # 4. take top‑left (hash_size×hash_size) coefficients, excluding DC term
     dct_low = dct[:hash_size, :hash_size]
