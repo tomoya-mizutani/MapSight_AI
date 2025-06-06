@@ -70,6 +70,7 @@ git version is 2.43.0.windows.1
 |   |   |-- log.yaml
 |   |   `-- task.yaml
 |   `-- workflows
+|       |-- auto_ai_PR.yml
 |       |-- daily-digest.yml
 |       `-- update-tree.yml
 |-- Agents
@@ -79,7 +80,12 @@ git version is 2.43.0.windows.1
 |   |-- GUI_requirements.md
 |   `-- JAPANESE_SUPPORT.md
 |-- screenshot
+|   |-- sample
+|   |   |-- frame_00559.jpg
+|   |   `-- frame_01387.jpg
 |   `-- connect_wsl.png
+|-- scripts
+|   `-- issue_auto_solver.py
 |-- src
 |   |-- gui
 |   |   |-- main.py
@@ -103,7 +109,7 @@ git version is 2.43.0.windows.1
 |-- survey.md
 `-- 作業メモ.md
 
-10 directories, 29 files
+12 directories, 33 files
 ```
 <!-- DIR-END -->
 
