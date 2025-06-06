@@ -20,6 +20,7 @@ Options (抜粋)
   --segments     5     出力ラウンド数
   --log-file moves.csv 移動履歴を CSV 保存
   --step S ステップ数Sを指定．defaultは1
+  --yt-date 公開日（例: 2025-06-06）でディレクトリ分けする（必須）
 """
 
 import numpy as np
@@ -157,6 +158,7 @@ def main():
     ap.add_argument('--dry-run', action='store_true')
     ap.add_argument('--log-file')
     ap.add_argument('--step', type=int, default=1, help='sample interval for template matching')
+    ap.add_argument('--yt-date', type=str, required=True, help='YouTube動画公開日 (例: 2025-06-06)')
     args = ap.parse_args()
 
     frames_dir = Path(args.frames_dir).resolve()
@@ -192,7 +194,6 @@ def main():
     print('Detecting template frames…')
     start_detect = time.time()
 
-
     t_idx = detect_template_frames(
         frames, tmpl_gray, args.end_th,
         step=args.step,
@@ -201,7 +202,6 @@ def main():
     )
     print(f"Template detection done in {time.time() - start_detect:.2f}s")
     t_idx.sort()
-    
 
     clusters = []
     for idx in t_idx:
@@ -227,12 +227,13 @@ def main():
         if args.peek:
             return
 
-    out_root = Path(args.out_root)
-    out_root.mkdir(exist_ok=True)
+    # ここから保存先ディレクトリ構成の変更
+    out_root = Path(args.out_root) / args.yt_date
+    out_root.mkdir(parents=True, exist_ok=True)
     rounds = []
     prev = 0
     for i, b in enumerate(boundaries + [len(frames)]):
-        rdir = out_root / f'Round{i+1}'
+        rdir = out_root / f'round{i+1}'
         rdir.mkdir(exist_ok=True)
         rounds.append((prev, b, rdir))
         prev = b
@@ -251,6 +252,8 @@ def main():
             fp.write('src,dst\n')
             for s, d in moves:
                 fp.write(f'{s},{d}\n')
+
+default_main = main
 
 if __name__ == '__main__':
     main()
