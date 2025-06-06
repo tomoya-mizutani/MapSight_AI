@@ -105,11 +105,12 @@ git version is 2.43.0.windows.1
 |-- TREE.md
 |-- config.yaml
 |-- extract_frames.sh
+|-- idea.md
 |-- requirements.txt
 |-- survey.md
 `-- 作業メモ.md
 
-12 directories, 33 files
+12 directories, 34 files
 ```
 <!-- DIR-END -->
 
