@@ -4,7 +4,8 @@
 # -----------------------------------------------------------------------------
 # 既存ディレクトリをそのまま活用します。
 #   * data/raw_videos/   … 元動画を保存（存在しなければ自動作成）
-#   * data/frames/            … 抽出 JPG を保存（存在しなければ自動作成）
+#   * data/frames/<upload-date>/
+#                        … 抽出 JPG を保存（存在しなければ自動作成）
 #
 # Usage:
 #   ./extract_frames.sh <VIDEO_URL> [FPS] [WIDTH]
@@ -29,6 +30,16 @@ WIDTH="${3:-1920}"
 
 RAW_DIR="data/raw_videos"
 FRAMES_DIR="data/frames"
+
+# YouTube の場合は公開日サブディレクトリを作成 -----------------------------
+if [[ "$VIDEO_URL" =~ (youtu\.be|youtube\.com) ]]; then
+  UPLOAD_DATE="$(yt-dlp --print "%(upload_date)s" "$VIDEO_URL" | head -n 1)"
+  if [[ "$UPLOAD_DATE" =~ ^[0-9]{8}$ ]]; then
+    UPLOAD_DATE="${UPLOAD_DATE:0:4}-${UPLOAD_DATE:4:2}-${UPLOAD_DATE:6:2}"
+    FRAMES_DIR="${FRAMES_DIR}/${UPLOAD_DATE}"
+  fi
+fi
+
 mkdir -p "$RAW_DIR" "$FRAMES_DIR"
 
 # --- 1) 動画ダウンロード: URL 種別で分岐 ------------------------------------
