@@ -33,7 +33,7 @@ FRAMES_DIR="data/frames"
 
 # YouTube の場合は公開日サブディレクトリを作成 -----------------------------
 if [[ "$VIDEO_URL" =~ (youtu\.be|youtube\.com) ]]; then
-  UPLOAD_DATE="$(yt-dlp --print "%(upload_date)s" "$VIDEO_URL" | head -n 1)"
+  UPLOAD_DATE="$(yt-dlp --print "%(upload_date)s" "$VIDEO_URL" 2>/dev/null | head -n 1)"
   if [[ "$UPLOAD_DATE" =~ ^[0-9]{8}$ ]]; then
     UPLOAD_DATE="${UPLOAD_DATE:0:4}-${UPLOAD_DATE:4:2}-${UPLOAD_DATE:6:2}"
     FRAMES_DIR="${FRAMES_DIR}/${UPLOAD_DATE}"
@@ -45,7 +45,7 @@ mkdir -p "$RAW_DIR" "$FRAMES_DIR"
 # --- 1) 動画ダウンロード: URL 種別で分岐 ------------------------------------
 if [[ "$VIDEO_URL" =~ (youtu\.be|youtube\.com) ]]; then
   # YouTube URL の場合: yt-dlp で mp4 (映像+音声) を DL
-  VID_ID="$(yt-dlp --get-id "$VIDEO_URL")"
+  VID_ID="$(yt-dlp --get-id "$VIDEO_URL" 2>/dev/null)"
   OUT_FILE="$RAW_DIR/${VID_ID}.mp4"
   if [[ ! -f "$OUT_FILE" ]]; then
     echo "[INFO] Downloading YouTube video to $OUT_FILE …"
