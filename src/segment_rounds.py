@@ -240,13 +240,22 @@ def main():
         prev = b
 
     moves = []
+    # for start_i, end_i, rdir in rounds:
+    #     for f in frames[start_i:end_i]:
+    #         dst = rdir / f.name
+    #         if not args.dry_run:
+    #             shutil.move(f, dst)
+    #         moves.append((str(f), str(dst)))
+    #     print(f'{rdir.name}: {end_i - start_i} frames')
     for start_i, end_i, rdir in rounds:
-        for f in frames[start_i:end_i]:
-            dst = rdir / f.name
+        num_frames = end_i - start_i
+        for idx, f in enumerate(frames[start_i:end_i], 1):
+            new_name = f"Frames_{idx:05}.jpg"
+            dst = rdir / new_name
             if not args.dry_run:
                 shutil.move(f, dst)
             moves.append((str(f), str(dst)))
-        print(f'{rdir.name}: {end_i - start_i} frames')
+        print(f'{rdir.name}: {num_frames} frames')
 
     if args.log_file:
         with open(args.log_file, 'w') as fp:
