@@ -34,3 +34,17 @@ Codexが使用可能な外部コマンドやAPIの一覧。
 - コードの生成・変更時には常にブランチを作成。
 - PR作成時はレビュワーを自動設定。
 
+## Code Style
+
+- Use Black for Python formatting.
+- Avoid abbreviations in variable names.
+
+## Testing
+
+- Run pytest tests/ before finalizing a PR.
+- All commits must pass lint checks via flake8.
+
+## PR Instructions
+
+- Title format: [Fix] Short description
+- Include a one-line summary and a "Testing Done" section
