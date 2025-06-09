@@ -10,7 +10,7 @@ segment_rounds.py – Match‑end template + **aHash** segmentation (rev6‑ahas
 * 実測：20 k フレームで aHash 計算 ~2 s (8C16T) → 処理全体 ~6 s。
 
 USAGE  ---------------------------------------------------------
-python segment_rounds.py data/frames \
+python segment_rounds.py data/frames/<upload-date> \
        --template data/templates/end_template.png [options]
 
 Options (抜粋)
@@ -20,7 +20,6 @@ Options (抜粋)
   --segments     5     出力ラウンド数
   --log-file moves.csv 移動履歴を CSV 保存
   --step S ステップ数Sを指定．defaultは1
-  --yt-date 公開日（例: 2025-06-06）でディレクトリ分けする（必須）
 """
 
 import numpy as np
@@ -158,7 +157,6 @@ def main():
     ap.add_argument('--dry-run', action='store_true')
     ap.add_argument('--log-file')
     ap.add_argument('--step', type=int, default=1, help='sample interval for template matching')
-    ap.add_argument('--yt-date', type=str, required=True, help='YouTube動画公開日 (例: 2025-06-06)')
     args = ap.parse_args()
 
     frames_dir = Path(args.frames_dir).resolve()
@@ -228,7 +226,10 @@ def main():
             return
 
     # ここから保存先ディレクトリ構成の変更
-    out_root = Path(args.out_root) / args.yt_date
+    upload_date = frames_dir.name
+    if upload_date == 'frames':
+        raise SystemExit('frames_dir must be data/frames/<upload-date>')
+    out_root = Path(args.out_root) / upload_date
     out_root.mkdir(parents=True, exist_ok=True)
     rounds = []
     prev = 0
