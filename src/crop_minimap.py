@@ -83,8 +83,8 @@ M = cv2.getPerspectiveTransform(src_pts, dst_pts)
 
 
 # --- 入出力ディレクトリの準備 ---
-in_dir = pathlib.Path("data/frames/2024-12-04")
-out_dir = pathlib.Path("data/minimaps/2024-12-04")
+in_dir = pathlib.Path("data/frames/2025-05-02")
+out_dir = pathlib.Path("data/minimaps/2025-05-02")
 out_dir.mkdir(exist_ok=True)
 
 # --- 画像処理ループ ---

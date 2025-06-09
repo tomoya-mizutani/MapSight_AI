@@ -223,13 +223,11 @@ def main():
         print('Boundaries:', boundaries)
         print('Frames per segment:', [b - a for a, b in zip([0]+boundaries, boundaries+[len(frames)])])
         if args.peek:
-            return
-
-    # ここから保存先ディレクトリ構成の変更
+            return    # ここから保存先ディレクトリ構成の変更
     upload_date = frames_dir.name
     if upload_date == 'frames':
         raise SystemExit('frames_dir must be data/frames/<upload-date>')
-    out_root = Path(args.out_root) / upload_date
+    out_root = Path('data') / upload_date
     out_root.mkdir(parents=True, exist_ok=True)
     rounds = []
     prev = 0
