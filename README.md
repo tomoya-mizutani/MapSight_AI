@@ -187,3 +187,14 @@ Fixes #123  <!-- 自動 Close したい場合は Fixes/Closes キーワード --
 5. PR → Merge → Projects Done (auto-archive)
 
 👉 [Backlog Board](https://github.com/<user>/<repo>/projects/1) で全タスクを確認
+
+## データ取得の流れ
+
+仮想環境:pubgmapenvの中で
+
+1. extract_frames.sh に対象URLを渡して実行(data/framesに画像データが生成される)
+2. crop_minimap.pyを実行（対象ディレクトリの箇所を適宜変更）
+3. clean_same_frames.pyを実行
+4. segment_rounds.pyを実行
+
+この段階でラウンドごとにマップ画像が保存される．（まだ不必要なデータが含まれている）

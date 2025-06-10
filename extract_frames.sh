@@ -10,7 +10,7 @@
 # Usage:
 #   ./extract_frames.sh <VIDEO_URL> [FPS] [WIDTH]
 #     VIDEO_URL : YouTube URL もしくは mp4 直リンク
-#     FPS       : 1 秒あたり抽出フレーム数 (default: 2)
+#     FPS       : 1 秒あたり抽出フレーム数 (default:1.0)
 #     WIDTH     : 抽出フレームの横幅ピクセル       (default: 1920)
 #
 # 例:
@@ -25,7 +25,7 @@ if [[ -z "$VIDEO_URL" ]]; then
   exit 1
 fi
 
-FPS="${2:-0.5}" #${変数:-デフォルト値} 
+FPS="${2:-1.0}" #${変数:-デフォルト値} 
 WIDTH="${3:-1920}"
 
 RAW_DIR="data/raw_videos"
