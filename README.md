@@ -78,7 +78,8 @@ git version is 2.43.0.windows.1
 |-- docs
 |   |-- GUI_implementation.md
 |   |-- GUI_requirements.md
-|   `-- JAPANESE_SUPPORT.md
+|   |-- JAPANESE_SUPPORT.md
+|   `-- SEGMENT_ROUNDS_DOCUMENTATION.md
 |-- screenshot
 |   |-- sample
 |   |   |-- frame_00559.jpg
@@ -94,6 +95,7 @@ git version is 2.43.0.windows.1
 |   |-- clean_same_frames.py
 |   |-- crop_minimap.py
 |   |-- segment_rounds.py
+|   |-- segment_rounds_updated.py
 |   `-- utils.py
 |-- tests
 |   |-- test_clean_same_frames.py
@@ -101,6 +103,7 @@ git version is 2.43.0.windows.1
 |-- .gitignore
 |-- .markdownlint.json
 |-- AGENTS.md
+|-- MapSight_AI_Colab.ipynb
 |-- README.md
 |-- TREE.md
 |-- config.yaml
@@ -110,7 +113,7 @@ git version is 2.43.0.windows.1
 |-- survey.md
 `-- 作業メモ.md
 
-12 directories, 34 files
+12 directories, 37 files
 ```
 <!-- DIR-END -->
 
