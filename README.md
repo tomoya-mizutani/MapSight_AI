@@ -76,6 +76,9 @@ git version is 2.43.0.windows.1
 |-- Agents
 |   `-- issue_auto_solver.py
 |-- docs
+|   |-- DEVELOPMENT_FLOW.md
+|   |-- DEVELOPMENT_WORKFLOW.md
+|   |-- ENVIRONMENT_SETUP.md
 |   |-- GUI_implementation.md
 |   |-- GUI_requirements.md
 |   |-- JAPANESE_SUPPORT.md
@@ -104,6 +107,8 @@ git version is 2.43.0.windows.1
 |-- .markdownlint.json
 |-- AGENTS.md
 |-- MapSight_AI_Colab.ipynb
+|-- PROJECT_STATUS.md
+|-- QUICK_GUIDE.md
 |-- README.md
 |-- TREE.md
 |-- config.yaml
@@ -113,7 +118,7 @@ git version is 2.43.0.windows.1
 |-- survey.md
 `-- 作業メモ.md
 
-12 directories, 37 files
+12 directories, 42 files
 ```
 <!-- DIR-END -->
 
