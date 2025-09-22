@@ -75,6 +75,9 @@ git version is 2.43.0.windows.1
 |       `-- update-tree.yml
 |-- Agents
 |   `-- issue_auto_solver.py
+|-- config
+|   `-- roster
+|       `-- roster.csv
 |-- docs
 |   |-- DEVELOPMENT_FLOW.md
 |   |-- DEVELOPMENT_WORKFLOW.md
@@ -83,6 +86,11 @@ git version is 2.43.0.windows.1
 |   |-- GUI_requirements.md
 |   |-- JAPANESE_SUPPORT.md
 |   `-- SEGMENT_ROUNDS_DOCUMENTATION.md
+|-- mapsight
+|   `-- schemas
+|       `-- positions.py
+|-- schemas
+|   `-- player_position.schema.json
 |-- screenshot
 |   |-- sample
 |   |   |-- frame_00559.jpg
@@ -103,6 +111,8 @@ git version is 2.43.0.windows.1
 |-- tests
 |   |-- test_clean_same_frames.py
 |   `-- test_segment_rounds.py
+|-- tools
+|   `-- build_empty_positions_inex.py
 |-- .gitignore
 |-- .markdownlint.json
 |-- AGENTS.md
@@ -116,9 +126,10 @@ git version is 2.43.0.windows.1
 |-- idea.md
 |-- requirements.txt
 |-- survey.md
+|-- データ設計.md
 `-- 作業メモ.md
 
-12 directories, 42 files
+18 directories, 47 files
 ```
 <!-- DIR-END -->
 
