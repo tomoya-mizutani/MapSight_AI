@@ -112,11 +112,6 @@ git version is 2.43.0.windows.1
 |-- tests
 |   |-- test_clean_same_frames.py
 |   `-- test_segment_rounds.py
-|-- tools
-|   |-- assign_tracks_to_players.py
-|   |-- build_empty_positions_inex.py
-|   |-- detect_minimap_positions.py
-|   `-- fill_positions_jsonl.py
 |-- .gitignore
 |-- .markdownlint.json
 |-- AGENTS.md
@@ -133,7 +128,7 @@ git version is 2.43.0.windows.1
 |-- データ設計.md
 `-- 作業メモ.md
 
-18 directories, 51 files
+17 directories, 46 files
 ```
 <!-- DIR-END -->
 
