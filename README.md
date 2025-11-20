@@ -79,6 +79,11 @@ git version is 2.43.0.windows.1
 |   `-- roster
 |       `-- roster.csv
 |-- docs
+|   |-- Tools
+|   |   |-- assign_tracks_to_players.md
+|   |   |-- build_empty_positions_inex.md
+|   |   |-- detect_minimap_positions.md
+|   |   `-- fill_positions_jsonl.md
 |   |-- DEVELOPMENT_FLOW.md
 |   |-- DEVELOPMENT_WORKFLOW.md
 |   |-- ENVIRONMENT_SETUP.md
@@ -133,7 +138,7 @@ git version is 2.43.0.windows.1
 |-- データ設計.md
 `-- 作業メモ.md
 
-18 directories, 51 files
+19 directories, 55 files
 ```
 <!-- DIR-END -->
 
