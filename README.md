@@ -10065,9 +10065,6 @@ git version is 2.43.0.windows.1
 |-- .gitignore
 |-- .markdownlint.json
 |-- AGENTS.md
-|-- MapSight_AI_Colab.ipynb
-|-- PROJECT_STATUS.md
-|-- QUICK_GUIDE.md
 |-- README.md
 |-- TREE.md
 |-- config.yaml
@@ -10077,9 +10074,10 @@ git version is 2.43.0.windows.1
 |-- requirements.txt
 |-- survey.md
 |-- データ設計.md
-`-- 作業メモ.md
+|-- 作業メモ.md
+`-- 課題.md
 
-907 directories, 9108 files
+907 directories, 9106 files
 ```
 <!-- DIR-END -->
 
