@@ -1,2 +1,7 @@
 data/
 MapSight_AI.backup.git/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
