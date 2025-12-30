@@ -58,6 +58,11 @@ git version is 2.43.0.windows.1
 起動コマンド: source ~/pubgmapenv/bin/activate  
 終了コマンド:deactivate  
 
+## Red Team Detector (Version 1)
+
+`Faze_***` などの赤チーム表示から位置座標を取得する検出器の仕様は
+`src/mapsight/analysis/red_team_detector.md` を参照してください。
+
 ## 📂 ディレクトリ構造図
 <!-- DIR-START -->
 <details>
@@ -10049,7 +10054,9 @@ git version is 2.43.0.windows.1
 |   |   |   |   |-- __init__.cpython-312.pyc
 |   |   |   |   `-- player_tracking.cpython-312.pyc
 |   |   |   |-- __init__.py
-|   |   |   `-- player_tracking.py
+|   |   |   |-- player_tracking.py
+|   |   |   |-- red_team_detector.md
+|   |   |   `-- red_team_detector.py
 |   |   `-- schemas
 |   |       `-- positions.py
 |   |-- check_env.py
@@ -10081,7 +10088,7 @@ git version is 2.43.0.windows.1
 |-- extract_frames.sh
 `-- requirements.txt
 
-910 directories, 9104 files
+910 directories, 9106 files
 ```
 </details>
 <!-- DIR-END -->
