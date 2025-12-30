@@ -7,6 +7,12 @@ from .player_tracking import (
     load_player_positions,
     plot_player_trajectory,
 )
+from .red_team_detector import (
+    RedTeamAnnotationConfig,
+    RedTeamDetection,
+    RedTeamDetector,
+    RedTeamDetectorConfig,
+)
 
 __all__ = [
     "PlayerTrajectory",
@@ -14,4 +20,8 @@ __all__ = [
     "get_player_trajectory",
     "load_player_positions",
     "plot_player_trajectory",
+    "RedTeamDetection",
+    "RedTeamDetector",
+    "RedTeamDetectorConfig",
+    "RedTeamAnnotationConfig",
 ]

@@ -58,6 +58,11 @@ git version is 2.43.0.windows.1
 起動コマンド: source ~/pubgmapenv/bin/activate  
 終了コマンド:deactivate  
 
+## Red Team Detector (Version 1)
+
+`Faze_***` などの赤チーム表示から位置座標を取得する検出器の仕様は
+`src/mapsight/analysis/red_team_detector.md` を参照してください。
+
 ## 📂 ディレクトリ構造図
 <!-- DIR-START -->
 <details>
