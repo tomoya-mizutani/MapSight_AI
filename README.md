@@ -10054,7 +10054,9 @@ git version is 2.43.0.windows.1
 |   |   |   |   |-- __init__.cpython-312.pyc
 |   |   |   |   `-- player_tracking.cpython-312.pyc
 |   |   |   |-- __init__.py
-|   |   |   `-- player_tracking.py
+|   |   |   |-- player_tracking.py
+|   |   |   |-- red_team_detector.md
+|   |   |   `-- red_team_detector.py
 |   |   `-- schemas
 |   |       `-- positions.py
 |   |-- check_env.py
@@ -10086,7 +10088,7 @@ git version is 2.43.0.windows.1
 |-- extract_frames.sh
 `-- requirements.txt
 
-910 directories, 9104 files
+910 directories, 9106 files
 ```
 </details>
 <!-- DIR-END -->
