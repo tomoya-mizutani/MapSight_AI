@@ -9999,21 +9999,10 @@ git version is 2.43.0.windows.1
 |   |       `-- man1
 |   |           `-- ttx.1
 |   `-- pyvenv.cfg
-|-- Agents
-|   `-- issue_auto_solver.py
 |-- config
 |   `-- roster
 |       |-- roster.csv
 |       `-- roster_sample.csv
-|-- docs
-|   |-- DEVELOPMENT_FLOW.md
-|   |-- DEVELOPMENT_WORKFLOW.md
-|   |-- ENVIRONMENT_SETUP.md
-|   |-- GUI_implementation.md
-|   |-- GUI_requirements.md
-|   |-- JAPANESE_SUPPORT.md
-|   |-- SEGMENT_ROUNDS_DOCUMENTATION.md
-|   `-- minimap_pipeline_worklog.md
 |-- mapsight
 |   |-- analysis
 |   |   |-- __pycache__
@@ -10026,6 +10015,14 @@ git version is 2.43.0.windows.1
 |-- notebook
 |   |-- __init__.py
 |   `-- colab_pipeline.py
+|-- notes
+|   |-- AGENTS.md
+|   |-- github_rule.md
+|   |-- idea.md
+|   |-- survey.md
+|   |-- データ設計.md
+|   |-- 作業メモ.md
+|   `-- 課題.md
 |-- schemas
 |   `-- player_position.schema.json
 |-- screenshot
@@ -10043,6 +10040,15 @@ git version is 2.43.0.windows.1
 |   |-- gui
 |   |   |-- main.py
 |   |   `-- styles.py
+|   |-- mapsight
+|   |   |-- analysis
+|   |   |   |-- __pycache__
+|   |   |   |   |-- __init__.cpython-312.pyc
+|   |   |   |   `-- player_tracking.cpython-312.pyc
+|   |   |   |-- __init__.py
+|   |   |   `-- player_tracking.py
+|   |   `-- schemas
+|   |       `-- positions.py
 |   |-- check_env.py
 |   |-- clean_same_frames.py
 |   |-- crop_minimap.py
@@ -10060,24 +10066,19 @@ git version is 2.43.0.windows.1
 |   |-- sample
 |   |   `-- test_detect.py
 |   |-- test_clean_same_frames.py
+|   |-- test_detect.py
 |   |-- test_player_tracking.py
 |   `-- test_segment_rounds.py
 |-- .gitignore
 |-- .markdownlint.json
-|-- AGENTS.md
 |-- README.md
 |-- TREE.md
 |-- config.yaml
 |-- erangel_players.json
 |-- extract_frames.sh
-|-- idea.md
-|-- requirements.txt
-|-- survey.md
-|-- データ設計.md
-|-- 作業メモ.md
-`-- 課題.md
+`-- requirements.txt
 
-907 directories, 9106 files
+910 directories, 9104 files
 ```
 <!-- DIR-END -->
 
