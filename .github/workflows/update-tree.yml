@@ -18,9 +18,15 @@ jobs:
 
       - name: Generate directory tree (hide .git contents)
         run: |
-          {
+          start_marker() {
             echo '<!-- DIR-START -->'
+            echo '<details>'
+            echo '<summary>📂 ディレクトリ構造図 (クリックで展開)</summary>'
+            echo
             echo '``` text'
+          }
+
+          write_tree() {
             # ルートを表すドット
             echo '.'
             # .git ディレクトリだけを明示的に追加
@@ -29,8 +35,18 @@ jobs:
             #   -I '.git' で .git 自体とその中身を無視
             #   --dirsfirst: ディレクトリを先に、--prune: 空ディレクトリは省略
             tree --charset ascii -a --dirsfirst --prune -I '.git' .
+          }
+
+          end_marker() {
             echo '```'
+            echo '</details>'
             echo '<!-- DIR-END -->'
+          }
+
+          {
+            start_marker
+            write_tree
+            end_marker
           } > TREE.md
 
       - name: Inject tree into README

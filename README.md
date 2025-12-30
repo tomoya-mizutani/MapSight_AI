@@ -60,6 +60,9 @@ git version is 2.43.0.windows.1
 
 ## 📂 ディレクトリ構造図
 <!-- DIR-START -->
+<details>
+<summary>📂 ディレクトリ構造図 (クリックで展開)</summary>
+
 ``` text
 .
 ├── .git
@@ -10080,6 +10083,7 @@ git version is 2.43.0.windows.1
 
 910 directories, 9104 files
 ```
+</details>
 <!-- DIR-END -->
 
 ## 動画URLからフレーム抽出  
