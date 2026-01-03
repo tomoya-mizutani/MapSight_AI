@@ -5,8 +5,8 @@
 # ROI 4 点 → 透視変換 & 512×512 保存
 # "output_size" は切り抜き後の出力画像サイズ（幅, 高さ）
 
-# 実行コマンド: python crop_minimap.py
-## data/minimaps/に処理済みデータが格納される．
+# 実行コマンド: python crop_minimap.py <入力ディレクトリ>
+## data/minimaps/<入力ディレクトリ名>/に処理済みデータが格納される．
 
 
 """
@@ -65,6 +65,7 @@ cv2.convexHull と cv2.UMat に関するドキュメント
 """
 
 
+import sys
 import cv2
 import yaml
 import pathlib
@@ -82,19 +83,32 @@ dst_pts = np.array([[0, 0], [dst_w, 0], [dst_w, dst_h], [0, dst_h]], dtype="floa
 M = cv2.getPerspectiveTransform(src_pts, dst_pts)
 
 
-# --- 入出力ディレクトリの準備 ---
-in_dir = pathlib.Path("data/frames/2025-09-18")
-out_dir = pathlib.Path("data/minimaps/2025-09-18")
-out_dir.mkdir(exist_ok=True)
+def main():
+    # --- 入出力ディレクトリの準備 ---
+    if len(sys.argv) < 2:
+        print("Usage: python crop_minimap.py <input_dir>")
+        sys.exit(1)
 
-# --- 画像処理ループ ---
-# 入力ディレクトリのjpgファイルを名前順に処理
-for f in tqdm.tqdm(sorted(in_dir.glob("*.jpg"))):
-    img   = cv2.imread(str(f))
-    # 透視変換をかけて切り抜き（warp）を作成
-    warp  = cv2.warpPerspective(img, M, (dst_w, dst_h))
-    out_f = out_dir / f.name
-    cv2.imwrite(str(out_f), warp)
+    in_dir = pathlib.Path(sys.argv[1])
+    if not in_dir.is_dir():
+        print(f"Input directory not found: {in_dir}")
+        sys.exit(1)
 
-# 処理完了した画像枚数を表示
-print("Done:", len(list(out_dir.glob('*.jpg'))), "images")
+    out_dir = pathlib.Path("data/minimaps") / in_dir.name
+    out_dir.mkdir(parents=True, exist_ok=True)
+
+    # --- 画像処理ループ ---
+    # 入力ディレクトリのjpgファイルを名前順に処理
+    for f in tqdm.tqdm(sorted(in_dir.glob("*.jpg"))):
+        img   = cv2.imread(str(f))
+        # 透視変換をかけて切り抜き（warp）を作成
+        warp  = cv2.warpPerspective(img, M, (dst_w, dst_h))
+        out_f = out_dir / f.name
+        cv2.imwrite(str(out_f), warp)
+
+    # 処理完了した画像枚数を表示
+    print("Done:", len(list(out_dir.glob('*.jpg'))), "images")
+
+
+if __name__ == "__main__":
+    main()
