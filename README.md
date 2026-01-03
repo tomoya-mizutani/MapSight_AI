@@ -10011,15 +10011,6 @@ git version is 2.43.0.windows.1
 |   `-- roster
 |       |-- roster.csv
 |       `-- roster_sample.csv
-|-- mapsight
-|   |-- analysis
-|   |   |-- __pycache__
-|   |   |   |-- __init__.cpython-312.pyc
-|   |   |   `-- player_tracking.cpython-312.pyc
-|   |   |-- __init__.py
-|   |   `-- player_tracking.py
-|   `-- schemas
-|       `-- positions.py
 |-- notebook
 |   |-- __init__.py
 |   `-- colab_pipeline.py
@@ -10088,7 +10079,7 @@ git version is 2.43.0.windows.1
 |-- extract_frames.sh
 `-- requirements.txt
 
-910 directories, 9106 files
+906 directories, 9101 files
 ```
 </details>
 <!-- DIR-END -->
