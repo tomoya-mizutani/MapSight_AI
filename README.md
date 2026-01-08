@@ -10016,6 +10016,7 @@ git version is 2.43.0.windows.1
 |   `-- colab_pipeline.py
 |-- notes
 |   |-- AGENTS.md
+|   |-- MapSight_AI.code-workspace
 |   |-- github_rule.md
 |   |-- idea.md
 |   |-- survey.md
@@ -10027,7 +10028,11 @@ git version is 2.43.0.windows.1
 |-- screenshot
 |   |-- sample
 |   |   |-- frame_00559.jpg
-|   |   `-- frame_01387.jpg
+|   |   |-- frame_00559_annotated.png
+|   |   |-- frame_01387.jpg
+|   |   |-- frame_01387_annotated.png
+|   |   |-- test.png
+|   |   `-- test_annotated.png
 |   |-- connect_wsl.png
 |   `-- スクリーンショット 2025-10-01 135237.png
 |-- scripts
@@ -10079,7 +10084,7 @@ git version is 2.43.0.windows.1
 |-- extract_frames.sh
 `-- requirements.txt
 
-906 directories, 9101 files
+906 directories, 9106 files
 ```
 </details>
 <!-- DIR-END -->
