@@ -10017,17 +10017,24 @@ git version is 2.43.0.windows.1
 |   |   |-- build_empty_positions_inex.md
 |   |   |-- detect_minimap_positions.md
 |   |   `-- fill_positions_jsonl.md
-|   |-- DEVELOPMENT_FLOW.md
-|   |-- DEVELOPMENT_WORKFLOW.md
-|   |-- ENVIRONMENT_SETUP.md
-|   |-- GUI_implementation.md
-|   |-- GUI_requirements.md
-|   |-- JAPANESE_SUPPORT.md
-|   |-- SEGMENT_ROUNDS_DOCUMENTATION.md
-|   `-- minimap_pipeline_worklog.md
-|-- mapsight
-|   `-- schemas
-|       `-- positions.py
+|   |-- DATA_MANAGEMENT.md
+|   `-- VIDEO_PIPELINE.md
+|-- notebook
+|   |-- __init__.py
+|   `-- colab_pipeline.py
+|-- notes
+|   |-- AGENTS.md
+|   |-- MapSight_AI.code-workspace
+|   |-- github_rule.md
+|   |-- idea.md
+|   |-- survey.md
+|   |-- データ設計.md
+|   |-- 作業メモ.md
+|   |-- 個人開発ドキュメント.pptx
+|   |-- 基本設計書_V0_01.md
+|   |-- 基本設計書_V0_02.md
+|   |-- 要件定義書_V0_01.md
+|   `-- 課題.md
 |-- schemas
 |   `-- player_position.schema.json
 |-- screenshot
@@ -10093,7 +10100,7 @@ git version is 2.43.0.windows.1
 |-- extract_frames.sh
 `-- requirements.txt
 
-19 directories, 55 files
+908 directories, 9120 files
 ```
 </details>
 <!-- DIR-END -->
