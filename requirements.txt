@@ -79,5 +79,8 @@ tzdata==2025.2
 ultralytics==8.3.134
 ultralytics-thop==2.0.14
 urllib3==2.4.0
-wrapt==1.17.2
+PyQt6==6.6.1
+PyQt6-Qt6==6.6.1
+PyQt6-sip==13.6.0
+pytest==8.3.5
 yt-dlp==2025.5.22
