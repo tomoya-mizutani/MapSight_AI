@@ -58,8 +58,16 @@ git version is 2.43.0.windows.1
 起動コマンド: source ~/pubgmapenv/bin/activate  
 終了コマンド:deactivate  
 
+## Red Team Detector (Version 1)
+
+`Faze_***` などの赤チーム表示から位置座標を取得する検出器の仕様は
+`src/mapsight/analysis/red_team_detector.md` を参照してください。
+
 ## 📂 ディレクトリ構造図
 <!-- DIR-START -->
+<details>
+<summary>📂 ディレクトリ構造図 (クリックで展開)</summary>
+
 ``` text
 .
 ├── .git
@@ -70,6 +78,7 @@ git version is 2.43.0.windows.1
 |   |   |-- log.yaml
 |   |   `-- task.yaml
 |   `-- workflows
+|       |-- auto_ai_PR.yml
 |       |-- daily-digest.yml
 |       `-- update-tree.yml
 |-- docs
@@ -79,11 +88,35 @@ git version is 2.43.0.windows.1
 |   |-- JAPANESE_SUPPORT.md
 |   `-- VIDEO_PIPELINE.md
 |-- screenshot
-|   `-- connect_wsl.png
+|   |-- sample
+|   |   |-- frame_00559.jpg
+|   |   |-- frame_00559_annotated.png
+|   |   |-- frame_01387.jpg
+|   |   |-- frame_01387_annotated.png
+|   |   |-- test.png
+|   |   `-- test_annotated.png
+|   |-- connect_wsl.png
+|   `-- スクリーンショット 2025-10-01 135237.png
+|-- scripts
+|   `-- issue_auto_solver.py
 |-- src
+|   |-- __pycache__
+|   |   |-- clean_same_frames.cpython-312.pyc
+|   |   `-- segment_rounds.cpython-312.pyc
 |   |-- gui
 |   |   |-- main.py
 |   |   `-- styles.py
+|   |-- mapsight
+|   |   |-- analysis
+|   |   |   |-- __pycache__
+|   |   |   |   |-- __init__.cpython-312.pyc
+|   |   |   |   `-- player_tracking.cpython-312.pyc
+|   |   |   |-- __init__.py
+|   |   |   |-- player_tracking.py
+|   |   |   |-- red_team_detector.md
+|   |   |   `-- red_team_detector.py
+|   |   `-- schemas
+|   |       `-- positions.py
 |   |-- check_env.py
 |   |-- clean_same_frames.py
 |   |-- crop_minimap.py
@@ -92,23 +125,31 @@ git version is 2.43.0.windows.1
 |   |-- utils.py
 |   `-- video_pipeline.py
 |-- tests
+|   |-- __pycache__
+|   |   |-- test_clean_same_frames.cpython-312-pytest-8.3.5.pyc
+|   |   |-- test_clean_same_frames.cpython-312-pytest-8.4.2.pyc
+|   |   |-- test_player_tracking.cpython-312-pytest-8.3.5.pyc
+|   |   |-- test_player_tracking.cpython-312-pytest-8.4.2.pyc
+|   |   |-- test_segment_rounds.cpython-312-pytest-8.3.5.pyc
+|   |   `-- test_segment_rounds.cpython-312-pytest-8.4.2.pyc
+|   |-- sample
+|   |   `-- test_detect.py
 |   |-- test_clean_same_frames.py
 |   |-- test_data_dirs.py
 |   |-- test_segment_rounds.py
 |   `-- test_video_pipeline.py
 |-- .gitignore
 |-- .markdownlint.json
-|-- AGENTS.md
 |-- README.md
 |-- TREE.md
 |-- config.yaml
+|-- erangel_players.json
 |-- extract_frames.sh
-|-- requirements.txt
-|-- survey.md
-`-- 作業メモ.md
+`-- requirements.txt
 
 9 directories, 34 files
 ```
+</details>
 <!-- DIR-END -->
 
 ## 動画取り込み
@@ -125,66 +166,41 @@ python src/video_pipeline.py --url <VIDEO_URL> scrim 2024/05/06 --rounds 2
 
 `src/data_dirs.py` を使うと、Scrim や tournament フォルダを自動作成できます。詳細は [docs/DATA_MANAGEMENT.md](docs/DATA_MANAGEMENT.md) を参照してください。
 
-## githubの開発フロー早わかり・説明
 
-### Workflow (for my future self)
 
-```text
-1. Create an Issue (task / bug / log)
-2. Move it to **In Progress** on Projects
-3. Commit with `feat: ...  #123`
-4. Open PR, merge -> Done (auto-closed)
+## データ取得の流れ
 
-```
+仮想環境:pubgmapenvの中で
 
-まとめ
+1. extract_frames.sh に対象URLを渡して実行(data/framesに画像データが生成される)
+2. crop_minimap.pyを実行（対象ディレクトリの箇所を適宜変更）
+3. clean_same_frames.pyを実行
+4. segment_rounds.pyを実行
 
-```text
-    Issues = タスク＋作業ログ
+この段階でラウンドごとにマップ画像が保存される．（まだ不必要なデータが含まれている）
 
-    Projects = カンバンで見える化
+### 解析データについて
 
-    Actions（任意） = 毎日まとめてログ
+詳細は [データ設計.md](データ設計.md)に記述している
 
-    これだけで GitHub 内でタスク管理／履歴／振り返りが完結
+### やりたいこと
 
-    後からチームが増えても、そのままスケールアップできる
+マップ画像を解析し，試合におけるマクロの動きとして何が重要か？を分析したい．
 
-```
+具体的に数値として分析できるものは
+- 各プレイヤーの位置情報
+   被っていたりもするので，そのあたりの処理をどうするか？も課題として残っているんだが）
+ぐらいかなぁ，
+それ以外にできることと言えば，時間を書ければ？
+マップに対して，アノテーションを付けることができそう？かな
 
-### commit テンプレ
+影とかそういうものから，高低差を推測する仕組みも導入したいかあ．
 
-```text
-<type>(scope): <短い概要>  #<Issue番号>
+[高低差マップ erangel](https://pubgmap.io/ja/erangel.html?/v2/20/5qst94/BlEG)　を参照すれば，Mapの高低差も分析対象に含めることができるかもしれない．
 
-type = feat | fix | docs | refactor | chore | test  
-scope = オプション: モジュール名や機能名  
+高いところが強いとかね
 
-<例>
-feat(map): add heatmap aggregation logic  #23
-fix(ml): prevent NaN in MLP loss          #45
-```
+もう一歩踏み込めば，家屋の位置情報と高低差の位置情報を含むことで，射線の通せる幅を考慮したマクロを組むことができるかもしれない．ルートの検出とかもしたいかも．
+ルートの検出は探索問題としてできると思う．
 
-### プルリクのテンプレ
-
-```text
-概要 / Purpose
-<!-- 何を・なぜ -->
-
-🔗 関連 Issue
-Fixes #123  <!-- 自動 Close したい場合は Fixes/Closes キーワード -->
-
-✅ チェックリスト
-- [ ] ビルドが通る
-- [ ] 仕様書 / docs 更新
-```
-
-## 🌱 Development Workflow
-
-1. **Issue を作る** (Task/Bug/Log)
-2. **Projects の Todo** に置く
-3. **branch**:`feature/<short-desc>` → コード
-4. `feat: ...  #issue` で commit
-5. PR → Merge → Projects Done (auto-archive)
-
-👉 [Backlog Board](https://github.com/<user>/<repo>/projects/1) で全タスクを確認
+なんやかんやで，肝となるのはオントロジーとか知識グラフをどうやって組み合わせるか？みたいな話なんだろうねぇ

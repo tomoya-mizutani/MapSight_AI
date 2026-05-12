@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "player_position.schema.json",
+  "type": "object",
+  "required": [
+    "match_id", "map_name", "map_round",
+    "frame_index", "ts_ms", "image_path",
+    "team_id", "player_slot", "player_uid", "status"
+  ],
+  "properties": {
+    "match_id": { "type": "string" },
+    "map_name": { "type": "string" },
+    "map_round": { "type": "string" },
+    "frame_index": { "type": "integer", "minimum": 1 },
+    "ts_ms": { "type": "integer", "minimum": 0 },
+    "image_path": { "type": "string" },
+    "team_id": { "type": "string", "pattern": "^TEAM(0[1-9]|1[0-6])$" },
+    "player_slot": { "type": "string", "enum": ["P1","P2","P3","P4"] },
+    "player_uid": { "type": "string" },
+    "status": { "type": "string", "enum": ["alive","downed","eliminated","unknown"] },
+    "px_x": { "type": ["number","null"] },
+    "px_y": { "type": ["number","null"] },
+    "x_norm": { "type": ["number","null"], "minimum": 0.0, "maximum": 1.0 },
+    "y_norm": { "type": ["number","null"], "minimum": 0.0, "maximum": 1.0 },
+    "confidence": { "type": ["number","null"], "minimum": 0.0, "maximum": 1.0 },
+    "calib_id": { "type": ["string","null"] },
+    "notes": { "type": ["string","null"] }
+  },
+  "additionalProperties": true
+}

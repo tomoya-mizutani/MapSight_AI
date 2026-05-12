@@ -10,8 +10,8 @@ segment_rounds.py – Match‑end template + **aHash** segmentation (rev6‑ahas
 * 実測：20 k フレームで aHash 計算 ~2 s (8C16T) → 処理全体 ~6 s。
 
 USAGE  ---------------------------------------------------------
-python segment_rounds.py data/frames \
-       --template data/templates/end_template.png [options]
+python segment_rounds.py data/frames/<upload-date> \
+       --template data/templates/Match_End_template.jpg [options]
 
 Options (抜粋)
   --peek               移動せず区切り候補を表示
@@ -69,6 +69,7 @@ def process_frame_cpu(idx, frame_path, tmpl_gray, thr, th, tw):
     if img is None or img.shape[0] < th or img.shape[1] < tw:
         return None
     corr = cv2.matchTemplate(img, tmpl_gray, cv2.TM_CCOEFF_NORMED)
+
     if corr.max() >= thr:
         return idx
     return None
@@ -78,7 +79,7 @@ def detect_template_frames(
     tmpl_gray: np.ndarray,
     thr: float = 0.75,
     step: int = 1,
-    cluster_gap: int = 5,
+    cluster_gap: int = 3,
     max_workers: int = 8
 ) -> list[int]:
     hits = []
@@ -152,7 +153,7 @@ def main():
     ap.add_argument('--segments', type=int, default=5)
     ap.add_argument('--threshold', type=int, default=10)
     ap.add_argument('--cluster-gap', type=int, default=5)
-    ap.add_argument('--end-th', type=float, default=0.75)
+    ap.add_argument('--end-th', type=float, default=0.5)
     ap.add_argument('--peek', action='store_true')
     ap.add_argument('--dry-run', action='store_true')
     ap.add_argument('--log-file')
@@ -192,7 +193,6 @@ def main():
     print('Detecting template frames…')
     start_detect = time.time()
 
-
     t_idx = detect_template_frames(
         frames, tmpl_gray, args.end_th,
         step=args.step,
@@ -201,7 +201,6 @@ def main():
     )
     print(f"Template detection done in {time.time() - start_detect:.2f}s")
     t_idx.sort()
-    
 
     clusters = []
     for idx in t_idx:
@@ -225,32 +224,47 @@ def main():
         print('Boundaries:', boundaries)
         print('Frames per segment:', [b - a for a, b in zip([0]+boundaries, boundaries+[len(frames)])])
         if args.peek:
-            return
-
-    out_root = Path(args.out_root)
-    out_root.mkdir(exist_ok=True)
+            return  
+        
+    # ここから保存先ディレクトリ構成の変更
+    upload_date = frames_dir.name
+    if upload_date == 'frames':
+        raise SystemExit('frames_dir must be data/frames/<upload-date>')
+    out_root = Path('data') / upload_date
+    out_root.mkdir(parents=True, exist_ok=True)
     rounds = []
     prev = 0
     for i, b in enumerate(boundaries + [len(frames)]):
-        rdir = out_root / f'Round{i+1}'
+        rdir = out_root / f'round{i+1}'
         rdir.mkdir(exist_ok=True)
         rounds.append((prev, b, rdir))
         prev = b
 
     moves = []
+    # for start_i, end_i, rdir in rounds:
+    #     for f in frames[start_i:end_i]:
+    #         dst = rdir / f.name
+    #         if not args.dry_run:
+    #             shutil.move(f, dst)
+    #         moves.append((str(f), str(dst)))
+    #     print(f'{rdir.name}: {end_i - start_i} frames')
     for start_i, end_i, rdir in rounds:
-        for f in frames[start_i:end_i]:
-            dst = rdir / f.name
+        num_frames = end_i - start_i
+        for idx, f in enumerate(frames[start_i:end_i], 1):
+            new_name = f"Frames_{idx:05}.jpg"
+            dst = rdir / new_name
             if not args.dry_run:
-                shutil.move(f, dst)
-            moves.append((str(f), str(dst)))
-        print(f'{rdir.name}: {end_i - start_i} frames')
+                shutil.copy2(f, dst) # ファイル移動からファイルのコピーに変更
+            moves.append((str(f), str(dst))) 
+        print(f'{rdir.name}: {num_frames} frames')
 
     if args.log_file:
         with open(args.log_file, 'w') as fp:
             fp.write('src,dst\n')
             for s, d in moves:
                 fp.write(f'{s},{d}\n')
+
+default_main = main
 
 if __name__ == '__main__':
     main()
